@@ -4,7 +4,7 @@ resource "aws_ecs_cluster" "default" {
 }
 
 module "app_container" {
-  source                       = "git::https://github.com/cloudposse/terraform-aws-ecs-container-definition.git?ref=tags/0.23.0"
+  source                       = "git::https://github.com/cloudposse/terraform-aws-ecs-container-definition.git?ref=tags/0.58.1"
   container_name               = var.name
   container_image              = var.container_image
   container_memory             = var.container_memory
@@ -17,13 +17,7 @@ module "app_container" {
       value = local.ssm_path_prefix
     }
   ]
-  container_depends_on = [
-    {
-      containerName = local.maintenance_container_name
-      condition     = "COMPLETE"
-    }
-  ]
-  port_mappings = [
+ port_mappings = [
     {
       containerPort = local.app_container_port
       hostPort      = local.app_container_port
@@ -43,7 +37,7 @@ module "app_container" {
 }
 
 module "nginx_container" {
-  source = "git::https://github.com/cloudposse/terraform-aws-ecs-container-definition.git?ref=tags/0.23.0"
+  source = "git::https://github.com/cloudposse/terraform-aws-ecs-container-definition.git?ref=tags/0.58.1"
   container_name               = var.nginx-name
   container_image              = var.container_image_nginx
   container_memory             = var.container_nginx_memory
