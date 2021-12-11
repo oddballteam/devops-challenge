@@ -18,9 +18,9 @@ terraform {
 }
 
 provider "aws" {
-  region     = "us-east-1"
+  region = var.region
 }
 
 locals {
-  prefix            = "${var.namespace}-${var.name}-${var.stage}"
+  prefix = "${var.namespace}-${var.name}-${var.stage}"
 }
