@@ -1,3 +1,4 @@
+# Pull the VPC and subnets that ECS will need
 data "aws_vpc" "default" {
   filter {
     name   = "is-default"

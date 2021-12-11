@@ -1,3 +1,4 @@
+# Define the application container
 module "app_container" {
   source                       = "git::https://github.com/cloudposse/terraform-aws-ecs-container-definition.git?ref=tags/0.58.1"
   container_name               = var.name
@@ -34,6 +35,7 @@ resource "aws_ecs_cluster" "default" {
   name = "${local.prefix}-ecs-cluster"
 }
 
+# Create the ECS service task definition
 module "ecs_service" {
   source                    = "git::https://github.com/cloudposse/terraform-aws-ecs-alb-service-task.git?ref=tags/0.56.0"
   namespace                 = var.namespace
@@ -45,6 +47,7 @@ module "ecs_service" {
   subnet_ids                = data.aws_subnet_ids.us-east.ids
   alb_security_group        = module.alb.security_group_id
   launch_type               = "FARGATE"
+  desired_count             = 1
   assign_public_ip          = true
   ecs_load_balancers = [
     {
