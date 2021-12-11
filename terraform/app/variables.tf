@@ -16,12 +16,6 @@ variable "region" {
   default     = "us-east-1"
 }
 
-variable "nginx-name" {
-  type        = string
-  description = "Name of the Nginx container"
-  default     = "nginx"
-}
-
 variable "stage" {
   type        = string
   description = "Stage (e.g. `prod`, `dev`, `staging`)"
@@ -33,22 +27,10 @@ variable "container_image" {
   description = "The image used to start the container. Images in the Docker Hub registry available by default"
 }
 
-variable "container_image_nginx" {
-  type        = string
-  description = "The image used to start the nginx container. Images in the Docker Hub registry available by default"
-  default     = ""
-}
-
 variable "app_container_port" {
   type        = number
   description = "Port for app container to expose"
   default     = 3000
-}
-
-variable "nginx_container_port" {
-  type        = number
-  description = "Port for nginx container to expose"
-  default     = 443
 }
 
 variable "container_memory" {
