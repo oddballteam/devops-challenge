@@ -1,5 +1,6 @@
 locals {
   listener_arns     = module.alb.listener_arns
+  target_group      = module.alb.default_target_group_arn
   alb_arn_suffix    = module.alb.alb_arn_suffix
   alb_dns_name      = module.alb.alb_dns_name
   alb_zone_id       = module.alb.alb_zone_id
