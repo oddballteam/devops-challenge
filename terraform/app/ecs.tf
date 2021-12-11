@@ -39,11 +39,11 @@ module "ecs_service" {
   namespace                 = var.namespace
   name                      = var.name
   stage                     = var.stage
-  vpc_id                    = local.vpc_id
+  vpc_id                    = data.aws_vpc.default.id
   ecs_cluster_arn           = aws_ecs_cluster.default.arn
   container_definition_json = module.app_container.json_map_encoded_list
-  subnet_ids                = local.subnet_ids
-  alb_security_group        = local.security_group_id
+  subnet_ids                = data.aws_subnet_ids.us-east.ids
+  alb_security_group        = module.alb.security_group_id
   launch_type               = "FARGATE"
   assign_public_ip          = true
   ecs_load_balancers = [
@@ -51,7 +51,7 @@ module "ecs_service" {
       container_name   = var.name
       container_port   = var.app_container_port
       elb_name         = null
-      target_group_arn = local.target_group
+      target_group_arn = module.alb.default_target_group_arn
     }
   ]
 }
