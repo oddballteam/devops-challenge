@@ -1,6 +1,6 @@
 # Define the application container
 module "app_container" {
-  source                       = "git::https://github.com/cloudposse/terraform-aws-ecs-container-definition.git?ref=tags/0.58.1"
+  source                       = "../modules/ecs_container_definition"
   container_name               = var.name
   container_image              = var.container_image
   container_memory             = var.container_memory
@@ -37,10 +37,8 @@ resource "aws_ecs_cluster" "default" {
 
 # Create the ECS service task definition
 module "ecs_service" {
-  source                    = "git::https://github.com/cloudposse/terraform-aws-ecs-alb-service-task.git?ref=tags/0.56.0"
-  namespace                 = var.namespace
-  name                      = var.name
-  stage                     = var.stage
+  source                    = "../modules/ecs_service"
+  prefix                    = local.prefix
   vpc_id                    = data.aws_vpc.default.id
   ecs_cluster_arn           = aws_ecs_cluster.default.arn
   container_definition_json = module.app_container.json_map_encoded_list

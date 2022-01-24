@@ -1,6 +1,6 @@
 # Create an application load balancer (ALB) that the app will use
 module "alb" {
-  source                                  = "git::https://github.com/cloudposse/terraform-aws-alb.git?ref=0.35.3"
+  source                                  = "../modules/alb"
   vpc_id                                  = data.aws_vpc.default.id
   subnet_ids                              = data.aws_subnet_ids.us-east.ids
   load_balancer_name                      = "${local.prefix}-alb"

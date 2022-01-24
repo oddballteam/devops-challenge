@@ -11,6 +11,11 @@ which will be valid only during the interview.
 - API key id and secret
 - console username and password
 
+### Prerequisites
+1. [Terraform](https://www.terraform.io/downloads) (direct install or via [tfenv](https://github.com/tfutils/tfenv/blob/master/README.md))
+2. [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+3. [Docker](https://docs.docker.com/get-docker/)
+
 ### Steps
 
 1. Deploy the ECR from `terraform/bootstrap` to have a place to push images to. You may want to
