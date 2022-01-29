@@ -21,6 +21,7 @@ module "ecr" {
   scan_images_on_push  = var.scan_images_on_push
   tags = {
     Terraform = "true"
-    app       = var.namespace
+    namespace = var.namespace
+    app       = var.name
   }
 }

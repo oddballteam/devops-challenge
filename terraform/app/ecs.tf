@@ -41,7 +41,7 @@ module "ecs_service" {
   prefix                    = local.prefix
   vpc_id                    = data.aws_vpc.default.id
   ecs_cluster_arn           = aws_ecs_cluster.default.arn
-  container_definition_json = module.app_container.json_map_encoded_list
+  container_definition_json = jsonencode([module.app_container.json_map])
   subnet_ids                = data.aws_subnet_ids.us-east.ids
   alb_security_group        = module.alb.security_group_id
   launch_type               = "FARGATE"

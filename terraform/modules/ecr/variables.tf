@@ -1,9 +1,3 @@
-variable "use_fullname" {
-  type        = bool
-  default     = true
-  description = "Set 'true' to use `namespace-stage-name` for ecr repository name, else `name`"
-}
-
 variable "principals_full_access" {
   type        = list(string)
   description = "Principal ARNs to provide with full access to the ECR"
@@ -25,7 +19,7 @@ variable "scan_images_on_push" {
 variable "max_image_count" {
   type        = number
   description = "How many Docker Image versions AWS ECR will store"
-  default     = 500
+  default     = 50
 }
 
 variable "image_names" {
@@ -38,27 +32,6 @@ variable "image_tag_mutability" {
   type        = string
   default     = "IMMUTABLE"
   description = "The tag mutability setting for the repository. Must be one of: `MUTABLE` or `IMMUTABLE`"
-}
-
-variable "enable_lifecycle_policy" {
-  type        = bool
-  description = "Set to false to prevent the module from adding any lifecycle policies to any repositories"
-  default     = true
-}
-
-variable "protected_tags" {
-  type        = set(string)
-  description = "Name of image tags prefixes that should not be destroyed. Useful if you tag images with names like `dev`, `staging`, and `prod`"
-  default     = []
-}
-
-variable "encryption_configuration" {
-  type = object({
-    encryption_type = string
-    kms_key         = any
-  })
-  description = "ECR encryption configuration"
-  default     = null
 }
 
 variable "tags" {

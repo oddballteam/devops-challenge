@@ -9,12 +9,12 @@ output "repository_name" {
 }
 
 output "repository_url" {
-  value       =  aws_ecr_repository.name[var.image_names[0]].repository_url
+  value       = aws_ecr_repository.name[var.image_names[0]].repository_url
   description = "URL of first repository created"
 }
 
 output "repository_arn" {
-  value       =  aws_ecr_repository.name[var.image_names[0]].arn
+  value       = aws_ecr_repository.name[var.image_names[0]].arn
   description = "ARN of first repository created"
 }
 
