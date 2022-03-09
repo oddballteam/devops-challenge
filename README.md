@@ -12,7 +12,7 @@ which will be valid only during the interview.
 - console username and password
 
 ### Prerequisites
-1. [Terraform](https://www.terraform.io/downloads) (direct install or via [tfenv](https://github.com/tfutils/tfenv/blob/master/README.md))
+1. [Terraform](https://www.terraform.io/downloads) - v0.13 or greater (direct install or via [tfenv](https://github.com/tfutils/tfenv/blob/master/README.md))
 2. [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 3. [Docker](https://docs.docker.com/get-docker/)
 
